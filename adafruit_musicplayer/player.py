@@ -23,7 +23,7 @@ BAD_FILE = (ValueError, OSError, IndexError, RuntimeError, MemoryError)
 class Player:
     """Plays through one output and one set of decoders, kept across files."""
 
-    def __init__(self, lib, vfs, audio, out_buf, dac, *, flac=None, mp3=None, volume_db=0):  # noqa: PLR0913
+    def __init__(self, lib, vfs, audio, out_buf, dac, *, flac=None, mp3=None, volume_db=-20):  # noqa: PLR0913
         self.lib = lib
         self.vfs = vfs
         self.dac = dac

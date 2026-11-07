@@ -46,7 +46,7 @@ def _config(overrides):
         "eink_dc": board.RX,
         "eink_reset": board.TX,
         "eink_busy": board.A3,
-        "volume_db": 0,
+        "volume_db": -20,
         "title": "MUSIC PLAYER",
     }
     for name, value in overrides.items():
