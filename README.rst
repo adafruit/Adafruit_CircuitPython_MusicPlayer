@@ -57,7 +57,8 @@ Known limits
 
 * Rewind and fast-forward need ``seek()``, which only the FLAC branch this was
   built with has. Without it they do nothing.
-* Ogg has not been played on the board yet.
+* Ogg Vorbis keeps up to 22 kHz stereo on the Fruit Jam, at the 300 MHz that
+  ``run()`` sets. 44.1 and 48 kHz stereo Ogg underrun; use FLAC or MP3 for those.
 * MP3 is RP2350 (``armv7emsp``) only.
 * File names with accented letters fail on exFAT cards, from a CircuitPython bug.
 
