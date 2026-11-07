@@ -113,7 +113,7 @@ class MP3Decoder:
                 if self._eof:
                     return False
                 continue
-            if mp3_native.decode(d, i, self._e, self._pcm, info):
+            if mp3_native.decode(d, i, self._e, self._pcm, info) or not info[3]:
                 # Bad data, or the bit reservoir after a seek: try the next sync.
                 if self._eof and self._e - i < _REFILL:
                     self._s = i + 1
