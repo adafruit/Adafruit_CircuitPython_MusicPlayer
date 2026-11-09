@@ -11,7 +11,7 @@ e-ink screen.
 
     adafruit_musicplayer.run()
 
-Status: prototype. Not yet offered upstream.
+Status: prototype. Not yet in the Adafruit library bundle.
 
 Hardware
 ========
@@ -24,6 +24,9 @@ Hardware
 Default pins: I2S ``A0`` ``A1`` ``A2``, MCLK ``D5``, SD CS ``D24``, e-ink CS
 ``D25``, DC ``RX``, reset ``TX``, busy ``A3``. Pass changes to ``run()``, for
 example ``adafruit_musicplayer.run(sd_cs=board.D10)``.
+
+The volume starts at -20 dB. Change it with ``volume_db``, from 0 to -63, for
+example ``adafruit_musicplayer.run(volume_db=-30)``.
 
 Controls
 ========
@@ -55,10 +58,11 @@ tracks. Delete that file after changing the music.
 Known limits
 ============
 
-* Rewind and fast-forward need ``seek()``, which only the FLAC branch this was
-  built with has. Without it they do nothing.
-* Ogg Vorbis keeps up to 22 kHz stereo on the Fruit Jam, at the 300 MHz that
-  ``run()`` sets. 44.1 and 48 kHz stereo Ogg underrun; use FLAC or MP3 for those.
+* Rewind and fast-forward work on FLAC (adafruit-circuitpython-flac 1.0.3 or
+  newer) and MP3. Ogg has no ``seek()`` yet, so they do nothing on Ogg files.
+* Ogg Vorbis plays up to 22 kHz stereo at 300 MHz (tested on a Fruit Jam). 44.1
+  and 48 kHz stereo Ogg underrun; use FLAC or MP3 for those. ``run()`` does not
+  support the Fruit Jam pins yet.
 * MP3 is RP2350 (``armv7emsp``) only.
 * File names with accented letters fail on exFAT cards, from a CircuitPython bug.
 
