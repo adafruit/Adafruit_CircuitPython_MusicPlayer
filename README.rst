@@ -112,6 +112,7 @@ License
 =======
 
 The Python is MIT. ``ter_u18b.bdf`` is Terminus, under the SIL Open Font License
-1.1. ``mp3_native.armv7emsp.mpy`` contains the Helix MP3 decoder, under the
-RealNetworks RPSL and RCSL, the same code Adafruit ships in CircuitPython's
+1.1. ``mp3_native.armv7emsp.mpy`` contains the Helix MP3 decoder, Portions
+Copyright (c) 1995-2002 RealNetworks, Inc., under the RealNetworks Public Source
+License 1.0 (RPSL), the same code Adafruit ships in CircuitPython's
 ``audiomp3`` (from `Adafruit_MP3 <https://github.com/adafruit/Adafruit_MP3>`_).
