@@ -42,7 +42,7 @@ _TURNS = (0, 2, 0, 1)  # NeoKey, wheel, NeoKey, ANO buttons
 
 
 class Keys:
-    """Either board may be missing (`neokey` or `ano` is then None); with
+    """Either board may be missing (``neokey`` or ``ano`` is then None); with
     neither, ValueError."""
 
     def __init__(self, i2c, neokey_addr=0x30, ano_addr=0x49, interval=0.01, read_delay=0.001):
