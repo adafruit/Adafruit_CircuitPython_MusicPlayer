@@ -21,8 +21,10 @@ authors = [
 urls = {Homepage = "https://github.com/adafruit/Adafruit_CircuitPython_MusicPlayer"}
 keywords = [
     "adafruit",
+    "blinka",
     "circuitpython",
     "micropython",
+    "musicplayer",
     "music",
     "player",
     "flac",
