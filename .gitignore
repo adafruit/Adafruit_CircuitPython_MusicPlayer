@@ -49,7 +49,3 @@ _build
 
 # Prebuilt native decoders, one per architecture (built in src/native)
 !adafruit_musicplayer/mp3_native.*.mpy
-
-# Local bundle builds (circuitpython-build-bundles)
-build-*
-bundles

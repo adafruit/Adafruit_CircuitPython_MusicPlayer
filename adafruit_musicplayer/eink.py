@@ -119,15 +119,19 @@ class Panel:
 
     @property
     def busy(self):
+        """True while the panel is still updating."""
         return self.busy_pin.value
 
     def wait(self):
+        """Block until the panel is free. RuntimeError if BUSY stays high
+        for BUSY_S seconds."""
         deadline = time.monotonic() + BUSY_S
         while self.busy_pin.value:
             if time.monotonic() > deadline:
                 raise RuntimeError("e-ink BUSY stuck high")
 
     def cmd(self, c, data=b""):
+        """Send command c and its data bytes to the SSD1680."""
         spi = self.spi
         while not spi.try_lock():
             pass
@@ -176,6 +180,9 @@ class Panel:
 
 
 class EinkScreen:
+    """Draws Menus.view() on the panel. Call update() every pass of the
+    main loop and poke() on each key event."""
+
     def __init__(self, spi, config, rows=4):
         displayio.release_displays()
         self.glyphs = load_font(_font_path())
@@ -229,6 +236,7 @@ class EinkScreen:
     # drawing, in landscape coordinates
 
     def rect(self, x, y, w, h, value):
+        """Fill a rectangle with value (BLACK or WHITE), in landscape coordinates."""
         bitmaptools.fill_region(self.panel.frame, y, PH - x - w, y + h, PH - x, value)
 
     def text(self, x, mid, s, ink=BLACK):
@@ -247,6 +255,8 @@ class EinkScreen:
             py -= CW
 
     def draw(self, v):
+        """Draw a view dict from Menus.view() into the frame. Does not
+        refresh the panel."""
         frame = self.panel.frame
         frame.fill(WHITE)
         for x, y, w, h in RULES:
