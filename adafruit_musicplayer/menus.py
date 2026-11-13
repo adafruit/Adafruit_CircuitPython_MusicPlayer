@@ -3,6 +3,8 @@
 # SPDX-License-Identifier: MIT
 """Frisson's menus: what the keys do, and what the screen shows.
 
+::
+
   ANO wheel     move the highlight (volume on the now playing screen)
   ANO select    open the artist or album, or play the track
                 (an artist with one album opens straight to its tracks)
