@@ -74,6 +74,9 @@ class Keys:
         return board
 
     def poll(self):
+        """Read one of the boards, in turn, and return the events since the
+        last call: a list of (kind, value) tuples, usually empty. The module
+        docstring lists the kinds. Call it every pass of the main loop."""
         now = time.monotonic()
         if now < self._next:
             return []

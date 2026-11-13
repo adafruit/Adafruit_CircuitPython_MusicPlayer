@@ -23,6 +23,9 @@ mp3_native.init(_ARENA)
 
 
 class MP3Decoder:
+    """Decodes an MP3 file from the SD card for adafruit_flac.FLACPlayer,
+    with the same attributes and methods the Player uses on a FLACDecoder."""
+
     def __init__(self):
         self._in = bytearray(8192)
         self._in_mv = memoryview(self._in)
@@ -45,7 +48,7 @@ class MP3Decoder:
         self._p = 0  # next one to hand out
 
     def open(self, file):
-        """Start on `file`. ValueError if it holds no MP3 audio."""
+        """Start on ``file``. ValueError if it holds no MP3 audio."""
         self.file = file
         file.seek(0, 2)
         self._size = file.tell()
@@ -71,6 +74,7 @@ class MP3Decoder:
         return 0
 
     def rewind(self):
+        """Go back to the first frame."""
         self.file.seek(self._start)
         self._reset(0)
 
@@ -81,7 +85,7 @@ class MP3Decoder:
         self.samples_decoded = decoded
 
     def seek(self, seconds):
-        """Jump to about `seconds`. Returns the time it landed on."""
+        """Jump to about ``seconds``. Returns the time it landed on."""
         if seconds <= 0 or not self.duration:
             self.rewind()
             return 0
