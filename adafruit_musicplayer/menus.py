@@ -35,6 +35,9 @@ def playable(path):
 
 
 class Screen:
+    """One menu screen: its kind ("albums", "tracks" or "now"), title, rows
+    and cursor."""
+
     def __init__(self, kind, title, items, cursor=0):
         self.kind = kind  # "albums" (also the artist list), "tracks", "now"
         self.title = title
@@ -44,6 +47,10 @@ class Screen:
 
 
 class Menus:
+    """The menu stack, from the artist list down to now playing. handle()
+    takes events from keys.Keys.poll() and drives the Player; view() says
+    what the screen shows. version goes up whenever the view changes."""
+
     def __init__(self, library, player):
         self.lib = library
         self.player = player
@@ -97,6 +104,7 @@ class Menus:
 
     @property
     def top(self):
+        """The Screen being shown."""
         return self.stack[-1]
 
     def _push(self, screen):
@@ -137,6 +145,7 @@ class Menus:
         return False
 
     def notify(self, text):
+        """Show text in place of the footer for NOTICE_S seconds."""
         self.notice = text
         self.notice_until = time.monotonic() + NOTICE_S
         self.version += 1
@@ -151,6 +160,7 @@ class Menus:
             self.version += 1
 
     def now_playing(self):
+        """Open the now playing screen, or redraw it if it is already open."""
         if self.top.kind != "now":
             self._push(Screen("now", "NOW PLAYING", []))
         else:

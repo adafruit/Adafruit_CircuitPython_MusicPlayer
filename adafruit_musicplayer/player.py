@@ -44,13 +44,16 @@ class Player:
 
     @property
     def playing(self):
+        """True while a track is playing and not paused."""
         return self.current is not None and not self.out.paused
 
     @property
     def paused(self):
+        """True while a track is loaded and paused."""
         return self.current is not None and self.out.paused
 
     def position(self):
+        """The current track's place in the queue, as (number, total), counting from 1."""
         return self.pos + 1, len(self.queue)
 
     def play(self, queue, pos, skip=False):
@@ -174,14 +177,18 @@ class Player:
         )
 
     def pause(self):
+        """Pause the track if one is playing."""
         if self.playing:
             self.out.pause()
 
     def resume(self):
+        """Carry on from where pause() stopped."""
         if self.paused:
             self.out.resume()
 
     def reverse(self):
+        """Restart the track, or in its first RESTART_S seconds go to the
+        previous track that can play."""
         if self.current is None:
             return
         previous = self._find(self.queue, self.pos - 1, -1)
@@ -191,6 +198,7 @@ class Player:
             self._start(previous, -1)
 
     def forward(self):
+        """Skip to the next track in the queue."""
         if self.current is not None:
             self._start(self.pos + 1)
 
@@ -216,6 +224,7 @@ class Player:
         self._start(self.pos + 1)
 
     def volume(self, steps):
+        """Turn the DAC volume up or down by steps dB, kept between DB_MIN and DB_MAX."""
         self.db = max(DB_MIN, min(DB_MAX, self.db + steps))
         self.dac.dac_volume = self.db
 
