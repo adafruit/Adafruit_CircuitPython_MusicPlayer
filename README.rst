@@ -1,6 +1,26 @@
 Introduction
 ============
 
+
+.. image:: https://readthedocs.org/projects/adafruit-circuitpython-musicplayer/badge/?version=latest
+    :target: https://docs.circuitpython.org/projects/musicplayer/en/latest/
+    :alt: Documentation Status
+
+
+.. image:: https://raw.githubusercontent.com/adafruit/Adafruit_CircuitPython_Bundle/main/badges/adafruit_discord.svg
+    :target: https://adafru.it/discord
+    :alt: Discord
+
+
+.. image:: https://github.com/adafruit/Adafruit_CircuitPython_MusicPlayer/workflows/Build%20CI/badge.svg
+    :target: https://github.com/adafruit/Adafruit_CircuitPython_MusicPlayer/actions
+    :alt: Build Status
+
+
+.. image:: https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json
+    :target: https://github.com/astral-sh/ruff
+    :alt: Code Style: Ruff
+
 An SD card music player for CircuitPython. It plays FLAC, MP3 and Ogg Vorbis,
 builds an artist, album and track index of the card, and shows menus on an
 e-ink screen.
@@ -107,6 +127,20 @@ Known limits
   support the Fruit Jam pins yet.
 * MP3 is RP2350 (``armv7emsp``) only.
 * File names with accented letters fail on exFAT cards, from a CircuitPython bug.
+
+Documentation
+=============
+API documentation for this library can be found on `Read the Docs <https://docs.circuitpython.org/projects/musicplayer/en/latest/>`_.
+
+For information on building library documentation, please check out
+`this guide <https://learn.adafruit.com/creating-and-sharing-a-circuitpython-library/sharing-our-docs-on-readthedocs#sphinx-5-1>`_.
+
+Contributing
+============
+
+Contributions are welcome! Please read our `Code of Conduct
+<https://github.com/adafruit/Adafruit_CircuitPython_MusicPlayer/blob/HEAD/CODE_OF_CONDUCT.md>`_
+before contributing to help this project stay welcoming.
 
 License
 =======
